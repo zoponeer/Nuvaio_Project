@@ -623,53 +623,57 @@ section{padding:96px 64px;}
 .how-step p{font-size:14px;color:var(--gray-600);line-height:1.68;}
 
 /* ═══════════════════════════════════════════
-   TESTIMONIALS
+   WHO WE'RE BUILT FOR
 ═══════════════════════════════════════════ */
-#testimonials{
+#built-for{
   background:linear-gradient(155deg,var(--navy) 0%,var(--navy-mid) 100%);
   position:relative;overflow:hidden;
 }
-#testimonials::before{
+#built-for::before{
   content:'';position:absolute;inset:0;
   background-image:
     linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
   background-size:60px 60px;pointer-events:none;
 }
-.testi-grid{
+.built-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:22px;margin-top:52px;position:relative;z-index:1;
 }
-.testi-card{
+.built-card{
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.09);
   border-radius:var(--r-lg);padding:32px;
   transition:all .3s var(--ease);
 }
-.testi-card:hover{
+.built-card:hover{
   background:rgba(255,255,255,.08);
   border-color:rgba(255,255,255,.15);
   transform:translateY(-4px);
 }
-.testi-stars{
-  display:flex;gap:3px;margin-bottom:16px;
-  color:var(--orange);font-size:15px;letter-spacing:1px;
+.built-card-icon{
+  font-size:32px;margin-bottom:16px;display:block;
 }
-.testi-quote{
-  font-size:14.5px;color:rgba(255,255,255,.75);
-  line-height:1.78;margin-bottom:22px;
-  font-style:italic;
+.built-card h3{
+  font-size:16px;font-weight:700;color:#fff;
+  margin-bottom:10px;
 }
-.testi-author{display:flex;align-items:center;gap:12px;}
-.testi-avatar{
-  width:40px;height:40px;border-radius:50%;
-  background:linear-gradient(135deg,var(--blue),var(--navy-light));
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;font-size:14px;color:#fff;flex-shrink:0;
-  border:2px solid rgba(255,255,255,.12);
+.built-card p{
+  font-size:14px;color:rgba(255,255,255,.65);
+  line-height:1.75;
 }
-.testi-name{font-size:14px;font-weight:600;color:#fff;}
-.testi-role{font-size:12px;color:rgba(255,255,255,.44);margin-top:2px;}
+.built-card ul{
+  list-style:none;margin-top:14px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.built-card ul li{
+  font-size:13.5px;color:rgba(255,255,255,.6);
+  display:flex;gap:9px;align-items:flex-start;line-height:1.5;
+}
+.built-card ul li::before{
+  content:'→';color:var(--orange);
+  font-weight:700;flex-shrink:0;margin-top:1px;
+}
 
 /* ═══════════════════════════════════════════
    ABOUT
@@ -1321,57 +1325,51 @@ footer{
 
 
 <!-- ═══════════════════════════════════════
-     TESTIMONIALS
+     WHO WE'RE BUILT FOR
 ════════════════════════════════════════ -->
-<section id="testimonials" class="dark-sec" aria-labelledby="testi-title">
+<section id="built-for" class="dark-sec" aria-labelledby="built-title">
   <div class="sec-inner">
     <div class="reveal">
-      <span class="sec-eyebrow">Client Feedback</span>
-      <h2 class="sec-title" id="testi-title">What Our Clients Say</h2>
-      <p class="sec-sub">Companies that have moved their travel programs to Nuvaio.</p>
+      <span class="sec-eyebrow">Who We Serve</span>
+      <h2 class="sec-title" id="built-title">Built for Companies That Have Outgrown Their Current Solution</h2>
+      <p class="sec-sub">We work best with a specific kind of company. See if this sounds like you.</p>
     </div>
 
-    <div class="testi-grid">
-      <div class="testi-card reveal delay-1">
-        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="testi-quote">
-          "We were using a major platform for three years. The night my CFO's connection through Dallas got cancelled at 10pm, I called Nuvaio. They had him rebooked on a direct flight before I finished explaining the situation. That's the difference."
-        </p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">SR</div>
-          <div>
-            <div class="testi-name">Sarah R.</div>
-            <div class="testi-role">Executive Assistant, Financial Services Firm</div>
-          </div>
-        </div>
+    <div class="built-grid">
+      <div class="built-card reveal delay-1">
+        <span class="built-card-icon" aria-hidden="true">🏢</span>
+        <h3>The Mid-Size Company</h3>
+        <p>You've grown past the point where an employee handles travel on the side — but you're not big enough to justify an in-house travel department.</p>
+        <ul>
+          <li>20–500 employees with regular business travel</li>
+          <li>Multiple travelers, routes, or departments to coordinate</li>
+          <li>A finance team that needs clean, reconcilable data</li>
+          <li>Leadership who expects things to just work</li>
+        </ul>
       </div>
 
-      <div class="testi-card reveal delay-2">
-        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="testi-quote">
-          "The quarterly spend reviews alone have saved us significant budget. Our previous agency never flagged that we were overpaying on a route we book monthly. Nuvaio found it in the first 90 days."
-        </p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">MT</div>
-          <div>
-            <div class="testi-name">Marcus T.</div>
-            <div class="testi-role">VP Operations, Healthcare Company</div>
-          </div>
-        </div>
+      <div class="built-card reveal delay-2">
+        <span class="built-card-icon" aria-hidden="true">😤</span>
+        <h3>The Platform-Frustrated Buyer</h3>
+        <p>You're using Concur, Egencia, TripActions, or a similar platform — and you keep hitting the same wall: no one to call, no flexibility, no accountability.</p>
+        <ul>
+          <li>Tired of rotating call center agents who don't know you</li>
+          <li>Had at least one after-hours emergency with no real support</li>
+          <li>Travelers booking off-platform because the tool is too rigid</li>
+          <li>Finance asking why travel spend is still a black box</li>
+        </ul>
       </div>
 
-      <div class="testi-card reveal delay-3">
-        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <p class="testi-quote">
-          "We had 180 people traveling to our annual conference. The air manifest management alone was worth the switch — complete, accurate, no surprises at check-in. And when weather hit the northeast, our team barely noticed because Nuvaio had already handled it."
-        </p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">JL</div>
-          <div>
-            <div class="testi-name">Jennifer L.</div>
-            <div class="testi-role">Head of Events, Technology Company</div>
-          </div>
-        </div>
+      <div class="built-card reveal delay-3">
+        <span class="built-card-icon" aria-hidden="true">🎯</span>
+        <h3>The Event & Group Organizer</h3>
+        <p>You're moving groups — conferences, incentive trips, offsites, client events — and you need an air partner who can handle the operational complexity without hand-holding.</p>
+        <ul>
+          <li>10 to 500+ travelers moving to a single destination</li>
+          <li>Need accurate air manifests and name-change management</li>
+          <li>Onsite support during the event itself</li>
+          <li>One point of contact who owns the whole thing</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1493,7 +1491,12 @@ footer{
 
       <div class="contact-form reveal-right">
         <div class="form-title">Request a Free Consultation</div>
-        <form id="contact-form" novalidate>
+        <!-- ⚙️  FORMSPREE SETUP:
+             1. Go to https://formspree.io and sign up (free)
+             2. Create a new form — set the notification email to info@nuvaiotravel.com
+             3. Copy your form ID (looks like: xpwzabcd)
+             4. Replace YOUR_FORM_ID below with that ID -->
+        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
           <div class="form-row-2">
             <div class="form-group" id="fg-first">
               <label for="inp-first">First Name</label>
@@ -1584,7 +1587,7 @@ footer{
       <a href="#about">About Nuvaio</a>
       <a href="#why-switch">Why Switch</a>
       <a href="#how">How It Works</a>
-      <a href="#testimonials">Client Stories</a>
+      <a href="#built-for">Who We Serve</a>
       <a href="#contact">Contact Us</a>
     </div>
 
@@ -1741,14 +1744,32 @@ footer{
 
     if (!valid) return;
 
-    // Simulate async submission
+    // Submit to Formspree
     btnSubmit.disabled = true;
     btnSubmit.textContent = 'Sending…';
 
-    setTimeout(function () {
-      form.style.display = 'none';
-      formSuccess.style.display = 'block';
-    }, 1200);
+    var data = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function (response) {
+      if (response.ok) {
+        form.style.display = 'none';
+        formSuccess.style.display = 'block';
+      } else {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Schedule My Free Consultation →';
+        alert('Something went wrong. Please email us directly at info@nuvaiotravel.com');
+      }
+    })
+    .catch(function () {
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Schedule My Free Consultation →';
+      alert('Network error. Please email us directly at info@nuvaiotravel.com');
+    });
   });
 
   // Clear error on input
