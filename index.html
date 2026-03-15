@@ -249,8 +249,8 @@ body{
 
 .hero-inner{
   max-width:1220px;margin:0 auto;width:100%;
-  display:grid;grid-template-columns:55% 1fr;
-  gap:64px;align-items:center;position:relative;z-index:1;
+  display:grid;grid-template-columns:46% 1fr;
+  gap:48px;align-items:center;position:relative;z-index:1;
 }
 
 /* Badge */
@@ -324,29 +324,89 @@ body{
 .btn-arrow{font-size:17px;transition:transform .22s var(--ease);}
 .btn:hover .btn-arrow{transform:translateX(4px);}
 
-/* Hero proof panels */
-.hero-proof{display:flex;flex-direction:column;gap:16px;}
-.proof-card{
-  background:var(--glass);border:1px solid var(--glass-b);
-  backdrop-filter:blur(16px);padding:26px 28px;
-  border-radius:var(--r);transition:all .3s var(--ease);
-  position:relative;overflow:hidden;
+/* ── Hero inline metrics row ── */
+.hero-metrics{
+  display:flex;align-items:center;gap:0;
+  margin-top:36px;flex-wrap:wrap;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;overflow:hidden;
 }
-.proof-card::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(180deg,var(--orange),rgba(232,96,28,.2));
+.hero-metric{
+  display:flex;flex-direction:column;
+  padding:16px 22px;flex:1;min-width:80px;
+  border-right:1px solid rgba(255,255,255,.1);
+  transition:background .2s;
 }
-.proof-card:hover{
-  background:rgba(255,255,255,.10);
-  transform:translateX(5px);
-  border-color:rgba(255,255,255,.18);
-}
-.proof-num{
+.hero-metric:last-child{border-right:none;}
+.hero-metric:hover{background:rgba(255,255,255,.07);}
+.metric-num{
   font-family:'Sora',sans-serif;
-  font-size:36px;font-weight:800;
-  color:var(--orange);letter-spacing:-1px;line-height:1;
+  font-size:22px;font-weight:800;
+  color:var(--orange);letter-spacing:-0.5px;line-height:1;
 }
-.proof-label{font-size:13px;color:rgba(255,255,255,.56);margin-top:6px;line-height:1.45;}
+.metric-label{
+  font-size:11px;color:rgba(255,255,255,.45);
+  margin-top:5px;line-height:1.35;
+}
+
+/* ═══════════════════════════════════════════
+   HERO IMAGE ACCORDION
+═══════════════════════════════════════════ */
+.hero-accordion{
+  display:flex;gap:7px;height:460px;
+  align-items:stretch;flex-shrink:0;
+}
+.acc-item{
+  position:relative;border-radius:16px;overflow:hidden;
+  cursor:pointer;flex-shrink:0;
+  width:54px;
+  transition:width .65s cubic-bezier(.4,0,.2,1);
+}
+.acc-item.active{width:330px;}
+.acc-item img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .65s var(--ease);
+}
+.acc-item:hover img{transform:scale(1.05);}
+.acc-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.60) 100%);
+  transition:background .4s;
+}
+.acc-item.active .acc-overlay{
+  background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.52) 100%);
+}
+/* Vertical label (collapsed) */
+.acc-label{
+  position:absolute;
+  color:#fff;font-size:12.5px;font-weight:700;
+  white-space:nowrap;letter-spacing:.3px;
+  text-shadow:0 1px 6px rgba(0,0,0,.6);
+  transition:all .45s cubic-bezier(.4,0,.2,1);
+  bottom:72px;left:50%;
+  transform:translateX(-50%) rotate(90deg);
+  transform-origin:center center;
+}
+/* Horizontal label (active) */
+.acc-item.active .acc-label{
+  bottom:20px;left:20px;
+  transform:none;
+  font-size:14px;
+}
+/* Service pill (visible only when active) */
+.acc-pill{
+  position:absolute;top:14px;left:14px;
+  background:var(--orange);
+  color:#fff;font-size:9.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.3px;
+  padding:4px 10px;border-radius:20px;
+  white-space:nowrap;
+  opacity:0;transform:translateY(-5px);
+  transition:opacity .35s .1s var(--ease),transform .35s .1s var(--ease);
+}
+.acc-item.active .acc-pill{opacity:1;transform:translateY(0);}
 
 /* ═══════════════════════════════════════════
    TRUST BAR
@@ -927,6 +987,8 @@ footer{
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
   .hero-inner{grid-template-columns:1fr 1fr;gap:44px;}
   .promises-grid{grid-template-columns:1fr 1fr;}
+  .hero-accordion{height:380px;}
+  .acc-item.active{width:260px;}
 }
 
 @media(max-width:768px){
@@ -936,9 +998,12 @@ footer{
   .mobile-drawer{display:block;}
 
   .hero{padding:96px 20px 64px;}
-  .hero-inner{grid-template-columns:1fr;gap:40px;}
-  .hero-proof{flex-direction:row;flex-wrap:wrap;}
-  .proof-card{flex:1;min-width:140px;}
+  .hero-inner{grid-template-columns:1fr;gap:36px;}
+  .hero-accordion{height:280px;}
+  .acc-item{width:44px;}
+  .acc-item.active{width:200px;}
+  .hero-metrics{border-radius:10px;}
+  .hero-metric{padding:14px 16px;}
 
   section{padding:60px 20px;}
   .trust-bar{padding:16px 20px;}
@@ -1060,21 +1125,81 @@ footer{
           See Our Services
         </a>
       </div>
+
+      <!-- Compact proof metrics -->
+      <div class="hero-metrics" role="list" aria-label="Key proof points">
+        <div class="hero-metric" role="listitem">
+          <span class="metric-num">10+</span>
+          <span class="metric-label">Years air expertise</span>
+        </div>
+        <div class="hero-metric" role="listitem">
+          <span class="metric-num">24/7</span>
+          <span class="metric-label">Live emergency line</span>
+        </div>
+        <div class="hero-metric" role="listitem">
+          <span class="metric-num">1:1</span>
+          <span class="metric-label">Named account manager</span>
+        </div>
+        <div class="hero-metric" role="listitem">
+          <span class="metric-num">500+</span>
+          <span class="metric-label">Group travelers managed</span>
+        </div>
+      </div>
     </div>
 
-    <div class="hero-proof" role="list" aria-label="Key proof points">
-      <div class="proof-card" role="listitem">
-        <div class="proof-num">10+</div>
-        <div class="proof-label">Years of corporate &amp; event air expertise</div>
+    <!-- Image accordion (ported from React interactive-image-accordion) -->
+    <div class="hero-accordion" id="hero-accordion" role="group" aria-label="Nuvaio Travel services">
+
+      <div class="acc-item active">
+        <img
+          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80"
+          alt="Corporate air programs — airport runway at dusk"
+          loading="eager">
+        <div class="acc-overlay"></div>
+        <span class="acc-pill">Core Service</span>
+        <span class="acc-label">Corporate Air Programs</span>
       </div>
-      <div class="proof-card" role="listitem">
-        <div class="proof-num">24/7</div>
-        <div class="proof-label">Live agent emergency line — no hold music, no chatbot</div>
+
+      <div class="acc-item">
+        <img
+          src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80"
+          alt="Group event travel — conference attendees"
+          loading="lazy">
+        <div class="acc-overlay"></div>
+        <span class="acc-pill">Groups 10–500+</span>
+        <span class="acc-label">Group Event Travel</span>
       </div>
-      <div class="proof-card" role="listitem">
-        <div class="proof-num">1:1</div>
-        <div class="proof-label">Named account manager dedicated to your company</div>
+
+      <div class="acc-item">
+        <img
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80"
+          alt="Dedicated agents — professional account manager"
+          loading="lazy">
+        <div class="acc-overlay"></div>
+        <span class="acc-pill">1:1 Service</span>
+        <span class="acc-label">Dedicated Agents</span>
       </div>
+
+      <div class="acc-item">
+        <img
+          src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=80"
+          alt="24/7 emergency line — city at night"
+          loading="lazy">
+        <div class="acc-overlay"></div>
+        <span class="acc-pill">Always On</span>
+        <span class="acc-label">24/7 Emergency Line</span>
+      </div>
+
+      <div class="acc-item">
+        <img
+          src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=900&q=80"
+          alt="Custom itineraries — travel planning map"
+          loading="lazy">
+        <div class="acc-overlay"></div>
+        <span class="acc-pill">Multi-City</span>
+        <span class="acc-label">Custom Itineraries</span>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1798,7 +1923,23 @@ footer{
     });
   });
 
-  /* ── 6. COUNT-UP ANIMATION for stats ── */
+  /* ── 6. HERO IMAGE ACCORDION ── */
+  var accItems = document.querySelectorAll('#hero-accordion .acc-item');
+
+  function setActive(index) {
+    accItems.forEach(function(el, i) {
+      el.classList.toggle('active', i === index);
+    });
+  }
+
+  accItems.forEach(function(item, index) {
+    // Mouse hover
+    item.addEventListener('mouseenter', function() { setActive(index); });
+    // Touch / click (mobile)
+    item.addEventListener('click', function() { setActive(index); });
+  });
+
+  /* ── 7. COUNT-UP ANIMATION for stats ── */
   function countUp(el, target, suffix) {
     const duration = 1800;
     const start = performance.now();
