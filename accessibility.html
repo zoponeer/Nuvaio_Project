@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<title>Nuvaio Travel | Accessibility Statement</title>
+<link rel="canonical" href="https://nuvaiotravel.com/accessibility.html">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   RESET & CUSTOM PROPERTIES
+═══════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:       #071428;
+  --navy-mid:   #0D2248;
+  --navy-light: #163464;
+  --navy-soft:  #1a3a6b;
+  --blue:       #1A5DAB;
+  --blue-light: #2B7DE0;
+  --orange:     #E8601C;
+  --orange-lt:  #FF7A3D;
+  --orange-glow:rgba(232,96,28,0.30);
+  --orange-hover:#D14E0F;
+  --white:      #FFFFFF;
+  --off-white:  #F5F7FA;
+  --gray-50:    #F9FAFB;
+  --gray-100:   #F0F2F5;
+  --gray-200:   #DDE1E9;
+  --gray-400:   #8B95A5;
+  --gray-600:   #4A5568;
+  --gray-800:   #1E2533;
+  --glass:      rgba(255,255,255,0.06);
+  --glass-b:    rgba(255,255,255,0.10);
+  --shadow-sm:  0 1px 4px rgba(0,0,0,.07);
+  --shadow-md:  0 4px 20px rgba(0,0,0,.09);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,.14);
+  --shadow-xl:  0 24px 60px rgba(0,0,0,.20);
+  --r:          14px;
+  --r-lg:       20px;
+  --r-xl:       28px;
+  --ease:       cubic-bezier(.4,0,.2,1);
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:68px;}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--gray-800);line-height:1.6;
+  overflow-x:hidden;background:#fff;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:99px;}
+
+/* ── FOCUS STATES ── */
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px;}
+
+/* ═══════════════════════════════════════════
+   SKIP NAVIGATION
+═══════════════════════════════════════════ */
+.skip-nav{
+  position:absolute;top:-100px;left:16px;z-index:9999;
+  background:var(--orange);color:#fff;
+  font-size:14px;font-weight:600;
+  padding:10px 20px;border-radius:var(--r);
+  text-decoration:none;
+  transition:top .2s var(--ease);
+}
+.skip-nav:focus{top:8px;}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:68px;
+  background:rgba(7,20,40,.86);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  transition:background .3s var(--ease),box-shadow .3s var(--ease);
+}
+#nav.scrolled{
+  background:rgba(7,20,40,.97);
+  box-shadow:0 4px 30px rgba(0,0,0,.3);
+}
+
+/* Logo */
+.logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
+.logo-svg{height:125px;width:auto;display:block;}
+
+/* Desktop links */
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{
+  text-decoration:none;color:rgba(255,255,255,.62);
+  font-size:14px;font-weight:500;
+  transition:color .2s;letter-spacing:.1px;white-space:nowrap;
+}
+.nav-links a:hover{color:#fff;}
+
+/* Hamburger */
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:6px;
+  -webkit-tap-highlight-color:transparent;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:rgba(255,255,255,.75);border-radius:2px;
+  transition:all .28s var(--ease);transform-origin:center;
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* Mobile drawer */
+.mobile-drawer{
+  display:none;position:fixed;
+  top:68px;left:0;right:0;z-index:899;
+  background:rgba(7,20,40,.98);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:0;overflow:hidden;
+  max-height:0;transition:max-height .35s var(--ease),padding .25s var(--ease);
+}
+.mobile-drawer.open{max-height:400px;padding:20px 28px 28px;}
+.mobile-drawer a{
+  display:block;color:rgba(255,255,255,.72);text-decoration:none;
+  font-size:15px;font-weight:500;padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  transition:color .2s;
+}
+.mobile-drawer a:last-child{border-bottom:none;}
+.mobile-drawer a:hover{color:#fff;}
+
+/* ═══════════════════════════════════════════
+   PAGE HERO
+═══════════════════════════════════════════ */
+.page-hero{
+  background:var(--navy);
+  padding:120px 64px 72px;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;z-index:0;
+}
+.page-hero-orb{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:0;
+  width:600px;height:600px;top:-150px;right:-150px;
+  background:radial-gradient(circle,rgba(232,96,28,.08) 0%,transparent 65%);
+}
+.page-hero-inner{
+  max-width:800px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.page-hero-label{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(232,96,28,.10);
+  border:1px solid rgba(232,96,28,.25);
+  color:#FF8A50;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.6px;
+  padding:6px 14px;border-radius:30px;margin-bottom:24px;
+}
+.page-hero h1{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(32px,4vw,48px);
+  font-weight:800;color:#fff;
+  line-height:1.12;letter-spacing:-1px;
+  margin-bottom:16px;
+}
+.page-hero-sub{
+  font-size:15px;color:rgba(255,255,255,.52);
+  font-weight:400;
+}
+
+/* ═══════════════════════════════════════════
+   CONTENT
+═══════════════════════════════════════════ */
+.policy-content{
+  background:#fff;
+  padding:72px 64px 96px;
+}
+.policy-body{
+  max-width:800px;margin:0 auto;
+}
+
+.policy-body h2{
+  font-family:'Sora',sans-serif;
+  font-size:20px;font-weight:700;
+  color:var(--navy);
+  margin:48px 0 14px;
+  padding-left:16px;
+  border-left:4px solid var(--orange);
+}
+.policy-body h2:first-child{margin-top:0;}
+
+.policy-body p{
+  font-size:15px;color:var(--gray-600);
+  line-height:1.80;margin-bottom:14px;
+}
+.policy-body ul{
+  list-style:none;
+  margin:0 0 14px 0;
+  padding:0;
+}
+.policy-body ul li{
+  font-size:15px;color:var(--gray-600);
+  line-height:1.78;
+  padding:5px 0 5px 22px;
+  position:relative;
+}
+.policy-body ul li::before{
+  content:'';
+  position:absolute;left:0;top:13px;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--orange);flex-shrink:0;
+}
+.policy-body a{
+  color:var(--orange);text-decoration:none;
+  font-weight:500;transition:color .2s;
+}
+.policy-body a:hover{color:var(--orange-hover);}
+
+.policy-body strong{
+  color:var(--gray-800);font-weight:600;
+}
+
+.policy-note{
+  background:var(--gray-50);
+  border-left:3px solid var(--orange);
+  border-radius:0 var(--r) var(--r) 0;
+  padding:16px 20px;
+  margin:24px 0;
+  font-size:14px;color:var(--gray-600);
+  line-height:1.72;
+}
+
+/* ── FEEDBACK CALLOUT (accessibility critical) ── */
+.feedback-callout{
+  background:linear-gradient(135deg,rgba(232,96,28,.07) 0%,rgba(232,96,28,.03) 100%);
+  border:1.5px solid rgba(232,96,28,.30);
+  border-left:5px solid var(--orange);
+  border-radius:0 var(--r-lg) var(--r-lg) 0;
+  padding:28px 28px 24px;
+  margin:32px 0;
+}
+.feedback-callout-header{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:14px;
+}
+.feedback-callout-header h3{
+  font-family:'Sora',sans-serif;
+  font-size:16px;font-weight:700;
+  color:var(--navy);
+}
+.feedback-callout-badge{
+  background:var(--orange);color:#fff;
+  font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.2px;
+  padding:3px 10px;border-radius:30px;
+}
+.feedback-callout p{
+  font-size:15px;color:var(--gray-600);
+  line-height:1.80;margin-bottom:10px;
+}
+.feedback-callout p:last-child{margin-bottom:0;}
+.feedback-callout .contact-row{
+  display:flex;flex-wrap:wrap;gap:20px;
+  margin-top:16px;
+}
+.feedback-callout .contact-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:14px;color:var(--gray-600);
+}
+.feedback-callout .contact-item a{
+  color:var(--orange);font-weight:600;text-decoration:none;transition:color .2s;
+}
+.feedback-callout .contact-item a:hover{color:var(--orange-hover);}
+.feedback-callout .response-note{
+  margin-top:14px;
+  font-size:13px;color:var(--gray-400);
+  font-style:italic;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{
+  background:#040C18;
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:60px 64px 36px;
+}
+.footer-grid{
+  max-width:1220px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;
+  gap:48px;padding-bottom:48px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.footer-brand p{
+  font-size:13.5px;color:rgba(255,255,255,.38);
+  line-height:1.78;margin-top:16px;max-width:280px;
+}
+.footer-col h4{
+  font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.6px;
+  color:rgba(255,255,255,.4);margin-bottom:16px;
+}
+.footer-col a{
+  display:block;font-size:13.5px;color:rgba(255,255,255,.45);
+  text-decoration:none;margin-bottom:10px;
+  transition:color .2s;
+}
+.footer-col a:hover{color:rgba(255,255,255,.82);}
+.footer-contact-item{
+  display:flex;align-items:center;gap:9px;
+  font-size:13px;color:rgba(255,255,255,.42);
+  margin-bottom:10px;
+}
+.footer-contact-item span{font-size:15px;}
+.footer-contact-item a{
+  color:rgba(255,255,255,.42);text-decoration:none;
+  transition:color .2s;display:inline;margin:0;
+}
+.footer-contact-item a:hover{color:rgba(255,255,255,.7);}
+
+.footer-bottom{
+  max-width:1220px;margin:32px auto 0;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:16px;
+  font-size:12.5px;color:rgba(255,255,255,.25);
+}
+.footer-bottom-links{display:flex;gap:24px;}
+.footer-bottom-links a{
+  color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s;
+}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.55);}
+.footer-bottom-links a[aria-current="page"]{
+  color:rgba(255,255,255,.55);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:1024px){
+  #nav{padding:0 36px;}
+  .page-hero{padding:110px 36px 60px;}
+  .policy-content{padding:60px 36px 80px;}
+  footer{padding:52px 36px 28px;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
+}
+
+@media(max-width:768px){
+  #nav{padding:0 24px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .mobile-drawer{display:block;}
+
+  .page-hero{padding:100px 24px 52px;}
+  .policy-content{padding:48px 24px 72px;}
+
+  footer{padding:48px 20px 24px;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
+  .footer-brand{grid-column:span 2;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .footer-bottom-links{justify-content:center;}
+
+  .feedback-callout .contact-row{flex-direction:column;gap:12px;}
+}
+
+@media(max-width:480px){
+  .page-hero{padding:90px 16px 44px;}
+  .policy-content{padding:40px 16px 60px;}
+  footer{padding:40px 16px 20px;}
+  .footer-grid{grid-template-columns:1fr;gap:24px;}
+  .footer-brand{grid-column:auto;}
+  .footer-bottom{gap:12px;}
+  .feedback-callout{padding:20px 18px;}
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="logo" aria-label="Nuvaio Travel — Home">
+    <img src="nuvaio-logo-white.png" class="logo-svg" alt="Nuvaio Travel">
+  </a>
+
+  <div class="nav-links" role="list">
+    <a href="index.html#services" role="listitem">Services</a>
+    <a href="index.html#why-switch" role="listitem">Why Nuvaio</a>
+    <a href="index.html#how" role="listitem">How It Works</a>
+    <a href="index.html#about" role="listitem">About</a>
+    <a href="index.html#contact" role="listitem">Contact</a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+  <a href="index.html#services">Services</a>
+  <a href="index.html#why-switch">Why Nuvaio</a>
+  <a href="index.html#how">How It Works</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE HERO
+════════════════════════════════════════ -->
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="page-hero-inner">
+    <div class="page-hero-label">Accessibility</div>
+    <h1 id="page-title">Accessibility Statement</h1>
+    <p class="page-hero-sub">Our commitment to an inclusive web experience</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CONTENT
+════════════════════════════════════════ -->
+<main class="policy-content" id="main-content">
+  <div class="policy-body">
+
+    <p>Nuvaio Travel LLC is committed to ensuring that our website is accessible to all visitors, including people with disabilities. We believe everyone deserves equal access to information about our services, and we continually work to improve the usability of <a href="https://nuvaiotravel.com">nuvaiotravel.com</a> for all users.</p>
+
+    <p>This Accessibility Statement reflects the current state of our website as of the date reviewed below. We welcome feedback and are committed to addressing accessibility issues promptly.</p>
+
+
+    <!-- 1 -->
+    <h2>1. Our Commitment</h2>
+
+    <p>Nuvaio Travel is committed to ensuring digital accessibility for people with disabilities. We strive to make our website usable by people who navigate using keyboard only, use screen readers, rely on magnification software, or have cognitive or motor impairments that affect how they interact with digital content.</p>
+
+    <p>We are actively working to improve the accessibility of our site and apply relevant accessibility standards as a guide. Accessibility is an ongoing effort, and we incorporate it into our design and development decisions.</p>
+
+
+    <!-- 2 -->
+    <h2>2. Conformance Status</h2>
+
+    <p>Our goal is to conform to the <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong>. These guidelines explain how to make web content more accessible to people with disabilities.</p>
+
+    <p>We are <strong>working toward</strong> full conformance with WCAG 2.1 Level AA. While we have taken meaningful steps to improve accessibility across the site, there may be areas that do not yet fully meet all criteria. We are actively identifying and addressing these gaps.</p>
+
+    <p>We do not claim full WCAG 2.1 Level AA compliance at this time. Our commitment is to make consistent progress and to resolve reported issues as quickly as reasonably practicable.</p>
+
+
+    <!-- 3 -->
+    <h2>3. Technical Specifications</h2>
+
+    <p>The nuvaiotravel.com website is built using standard <strong>HTML, CSS, and JavaScript</strong>. It is designed with accessibility in mind and intended to be compatible with:</p>
+
+    <ul>
+      <li><strong>Screen readers</strong> — including NVDA and JAWS on Windows, and VoiceOver on macOS and iOS.</li>
+      <li><strong>Keyboard-only navigation</strong> — all interactive elements are reachable and operable via keyboard. Visible focus indicators are present throughout the site.</li>
+      <li><strong>Browser zoom</strong> — the layout is designed to remain functional and readable at zoom levels up to 200% without loss of content or functionality.</li>
+      <li><strong>High-contrast modes</strong> — the site uses sufficient color contrast ratios as a baseline for users who require high-contrast display settings.</li>
+      <li><strong>Modern browsers</strong> — Chrome, Firefox, Safari, and Edge, including their latest versions at the time of publication.</li>
+    </ul>
+
+
+    <!-- 4 -->
+    <h2>4. Known Limitations</h2>
+
+    <p>We are transparent about the following areas where accessibility may not yet be fully achieved:</p>
+
+    <ul>
+      <li><strong>Third-party embedded content.</strong> Our contact form is processed via Formspree, a third-party service. While we have implemented accessible markup around the form, Formspree's own interface and error-handling components may not fully meet all WCAG 2.1 Level AA criteria. We are monitoring vendor updates and evaluating alternatives.</li>
+      <li><strong>Skip navigation.</strong> A skip navigation link is present on this page. We are in the process of ensuring it is consistently implemented across all pages of the site.</li>
+      <li><strong>Legacy content.</strong> Certain older content or assets may not meet current accessibility standards. We address these on an ongoing basis.</li>
+    </ul>
+
+    <p>If you encounter a specific issue not listed here, please let us know using the contact information in Section 6 below.</p>
+
+
+    <!-- 5 -->
+    <h2>5. Measures We Have Taken</h2>
+
+    <p>We have taken the following concrete steps to improve accessibility on this site:</p>
+
+    <ul>
+      <li><strong>Semantic HTML structure</strong> — pages use proper heading hierarchy, landmark elements (<code>nav</code>, <code>main</code>, <code>footer</code>), and descriptive <code>section</code> and <code>aria-labelledby</code> attributes to help screen reader users orient themselves.</li>
+      <li><strong>ARIA labels on interactive elements</strong> — navigation buttons, hamburger menus, and form controls include <code>aria-label</code> and <code>aria-expanded</code> attributes where appropriate.</li>
+      <li><strong>Sufficient color contrast</strong> — primary text and interactive elements are designed to meet or exceed a 4.5:1 contrast ratio against their backgrounds.</li>
+      <li><strong>Skip navigation link</strong> — a "skip to main content" link is available at the top of each page for keyboard users to bypass repeated navigation.</li>
+      <li><strong>Alt text on images</strong> — meaningful images include descriptive alt text; decorative images use empty alt attributes (<code>alt=""</code>) to be ignored by screen readers.</li>
+      <li><strong>Keyboard navigable forms</strong> — all form fields and submit controls are reachable and operable via Tab and Enter keys.</li>
+      <li><strong>Visible focus indicators</strong> — focused interactive elements display a visible orange outline to assist keyboard and switch-device users.</li>
+      <li><strong>Responsive design</strong> — the site adapts to different screen sizes and orientations without requiring horizontal scrolling at standard zoom levels.</li>
+    </ul>
+
+
+    <!-- 6 -->
+    <h2>6. Feedback &amp; Contact</h2>
+
+    <div class="feedback-callout" role="region" aria-label="Accessibility feedback contact information">
+      <div class="feedback-callout-header">
+        <h3>Experiencing an Accessibility Barrier?</h3>
+        <span class="feedback-callout-badge">Important</span>
+      </div>
+      <p>If you encounter any accessibility barriers on our website — including content that is difficult to read, interactive elements that are not keyboard accessible, or features that do not work with your assistive technology — please contact us. We take all accessibility feedback seriously and will work to resolve reported issues promptly.</p>
+      <p>When contacting us, it is helpful to include: the web address (URL) where you encountered the issue, a description of the problem, the assistive technology or browser you were using, and your contact information so we can follow up.</p>
+      <div class="contact-row">
+        <div class="contact-item">
+          <span aria-hidden="true">✉️</span>
+          <span><strong>Email:</strong> <a href="mailto:info@nuvaiotravel.com">info@nuvaiotravel.com</a></span>
+        </div>
+        <div class="contact-item">
+          <span aria-hidden="true">📞</span>
+          <span><strong>Phone:</strong> <a href="tel:+19754440066">975-444-0066</a></span>
+        </div>
+      </div>
+      <p class="response-note">We aim to respond to all accessibility inquiries within 2 business days.</p>
+    </div>
+
+
+    <!-- 7 -->
+    <h2>7. Formal Complaints</h2>
+
+    <p>If you have contacted us regarding an accessibility concern and you are not satisfied with our response, you have the right to escalate your complaint through the following channels:</p>
+
+    <ul>
+      <li><strong>U.S. Department of Justice ADA Information Line</strong> — available at 1-800-514-0301 (voice) or 1-800-514-0383 (TTY). The DOJ provides information about the Americans with Disabilities Act and how it applies to websites and digital services.</li>
+      <li><strong>ADA National Network</strong> — the network of regional ADA Centers provides guidance and technical assistance. You can find your regional center at <a href="https://adata.org" target="_blank" rel="noopener noreferrer">adata.org</a>.</li>
+    </ul>
+
+    <p>We encourage you to reach out to us directly first, as we are committed to resolving accessibility issues in good faith and as quickly as possible.</p>
+
+
+    <!-- 8 -->
+    <h2>8. Date of This Statement</h2>
+
+    <p>This Accessibility Statement was last reviewed and updated on <strong>March 26, 2026</strong>.</p>
+
+    <p>We review this statement periodically and update it to reflect improvements made to the site and any new known limitations identified. If you have questions about this statement or our accessibility efforts, contact us at <a href="mailto:info@nuvaiotravel.com">info@nuvaiotravel.com</a>.</p>
+
+    <div class="policy-note">
+      <strong>Nuvaio Travel LLC</strong> &nbsp;&bull;&nbsp; St. Louis, MO &nbsp;&bull;&nbsp; <a href="mailto:info@nuvaiotravel.com">info@nuvaiotravel.com</a> &nbsp;&bull;&nbsp; <a href="tel:+19754440066">975-444-0066</a>
+    </div>
+
+  </div>
+</main>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+
+    <div class="footer-brand">
+      <img src="nuvaio-logo-white.png" style="height:115px;width:auto;" alt="Nuvaio Travel">
+      <p>The corporate travel partner mid-size companies choose when they need real expertise, dedicated agents, and a team that picks up the phone.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="index.html#services">Air Planning &amp; Budget</a>
+      <a href="index.html#services">Flight Bookings</a>
+      <a href="index.html#services">Corporate Travel Management</a>
+      <a href="index.html#services">Group Travel &amp; Manifests</a>
+      <a href="index.html#services">24-Hour Emergency Line</a>
+      <a href="index.html#services">Hotel &amp; Transport</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html#about">About Nuvaio</a>
+      <a href="index.html#why-switch">Why Switch</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="index.html#built-for">Who We Serve</a>
+      <a href="index.html#contact">Contact Us</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">📍</span>
+        <span>St. Louis, MO &mdash; Nationwide</span>
+      </div>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">📞</span>
+        <a href="tel:+19754440066">975-444-0066</a>
+      </div>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">✉️</span>
+        <a href="mailto:info@nuvaiotravel.com">info@nuvaiotravel.com</a>
+      </div>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">🕐</span>
+        <span>Mon–Fri · 9am–5pm CST</span>
+      </div>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">🚨</span>
+        <span>24/7 Emergency Line</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2026 Nuvaio Travel LLC. All rights reserved. Corporate Travel Management&nbsp;&bull;&nbsp;Business Flight Booking&nbsp;&bull;&nbsp;Event Air Travel</span>
+    <div class="footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="accessibility.html" aria-current="page">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── 1. NAV: Scroll effect ── */
+  const nav = document.getElementById('nav');
+
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── 2. MOBILE NAV ── */
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobile-drawer');
+
+  hamburger.addEventListener('click', function () {
+    const isOpen = drawer.classList.contains('open');
+    drawer.classList.toggle('open', !isOpen);
+    hamburger.classList.toggle('open', !isOpen);
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+    drawer.setAttribute('aria-hidden', String(isOpen));
+  });
+
+  // Close drawer when a link is clicked
+  drawer.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  // Close drawer on outside click
+  document.addEventListener('click', function (e) {
+    if (!nav.contains(e.target) && !drawer.contains(e.target)) {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+}());
+</script>
+
+</body>
+</html>
