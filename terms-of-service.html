@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<title>Nuvaio Travel | Terms of Service</title>
+<meta name="description" content="Terms of Service for Nuvaio Travel LLC — corporate travel management consulting based in St. Louis, MO.">
+<link rel="canonical" href="https://nuvaiotravel.com/terms-of-service.html">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   RESET & CUSTOM PROPERTIES
+═══════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:       #071428;
+  --navy-mid:   #0D2248;
+  --navy-light: #163464;
+  --orange:     #E8601C;
+  --orange-lt:  #FF7A3D;
+  --orange-glow:rgba(232,96,28,0.30);
+  --orange-hover:#D14E0F;
+  --white:      #FFFFFF;
+  --off-white:  #F5F7FA;
+  --gray-50:    #F9FAFB;
+  --gray-200:   #DDE1E9;
+  --gray-400:   #8B95A5;
+  --gray-600:   #4A5568;
+  --gray-800:   #1E2533;
+  --glass:      rgba(255,255,255,0.06);
+  --shadow-md:  0 4px 20px rgba(0,0,0,.09);
+  --r:          14px;
+  --ease:       cubic-bezier(.4,0,.2,1);
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:68px;}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--gray-800);line-height:1.6;
+  overflow-x:hidden;background:#fff;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:99px;}
+
+/* ── FOCUS STATES ── */
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px;}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:68px;
+  background:rgba(7,20,40,.86);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  transition:background .3s var(--ease),box-shadow .3s var(--ease);
+}
+#nav.scrolled{
+  background:rgba(7,20,40,.97);
+  box-shadow:0 4px 30px rgba(0,0,0,.3);
+}
+
+/* Logo */
+.logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
+.logo-svg{height:125px;width:auto;display:block;}
+
+/* Desktop links */
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{
+  text-decoration:none;color:rgba(255,255,255,.62);
+  font-size:14px;font-weight:500;
+  transition:color .2s;letter-spacing:.1px;white-space:nowrap;
+}
+.nav-links a:hover{color:#fff;}
+
+/* Hamburger */
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:6px;
+  -webkit-tap-highlight-color:transparent;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:rgba(255,255,255,.75);border-radius:2px;
+  transition:all .28s var(--ease);transform-origin:center;
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* Mobile drawer */
+.mobile-drawer{
+  display:none;position:fixed;
+  top:68px;left:0;right:0;z-index:899;
+  background:rgba(7,20,40,.98);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:0;overflow:hidden;
+  max-height:0;transition:max-height .35s var(--ease),padding .25s var(--ease);
+}
+.mobile-drawer.open{max-height:400px;padding:20px 28px 28px;}
+.mobile-drawer a{
+  display:block;color:rgba(255,255,255,.72);text-decoration:none;
+  font-size:15px;font-weight:500;padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  transition:color .2s;
+}
+.mobile-drawer a:last-child{border-bottom:none;}
+.mobile-drawer a:hover{color:#fff;}
+
+/* ═══════════════════════════════════════════
+   PAGE HERO
+═══════════════════════════════════════════ */
+.page-hero{
+  padding:120px 64px 72px;
+  background:var(--navy);
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;z-index:0;
+}
+.page-hero-orb-1{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:0;
+  width:600px;height:600px;top:-200px;right:-150px;
+  background:radial-gradient(circle,rgba(232,96,28,.08) 0%,transparent 65%);
+}
+.page-hero-orb-2{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:0;
+  width:500px;height:500px;bottom:-200px;left:-100px;
+  background:radial-gradient(circle,rgba(26,93,171,.12) 0%,transparent 65%);
+}
+.page-hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;}
+.page-hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(232,96,28,.10);
+  border:1px solid rgba(232,96,28,.25);
+  color:#FF8A50;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.6px;
+  padding:6px 14px;border-radius:30px;margin-bottom:24px;
+}
+.page-hero h1{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(32px,4vw,50px);
+  line-height:1.12;color:#fff;
+  margin-bottom:18px;letter-spacing:-1px;
+  font-weight:800;
+}
+.page-hero-sub{
+  font-size:15px;
+  color:rgba(255,255,255,.52);
+  line-height:1.75;
+}
+
+/* ═══════════════════════════════════════════
+   LEGAL CONTENT
+═══════════════════════════════════════════ */
+.legal-content{
+  background:#fff;
+  padding:72px 64px 96px;
+}
+.legal-inner{
+  max-width:800px;margin:0 auto;
+}
+
+/* Intro blurb */
+.legal-intro{
+  font-size:15.5px;color:var(--gray-600);line-height:1.80;
+  padding-bottom:40px;margin-bottom:48px;
+  border-bottom:1px solid var(--gray-200);
+}
+
+/* Section blocks */
+.legal-section{
+  margin-bottom:44px;
+}
+.legal-section:last-child{margin-bottom:0;}
+
+.legal-section h2{
+  font-family:'Sora',sans-serif;
+  font-size:18px;font-weight:700;
+  color:var(--navy);
+  margin-bottom:14px;
+  padding-left:14px;
+  border-left:3px solid var(--orange);
+  line-height:1.3;
+}
+
+.legal-section p{
+  font-size:15px;color:var(--gray-600);line-height:1.82;
+  margin-bottom:14px;
+}
+.legal-section p:last-child{margin-bottom:0;}
+
+.legal-section ul{
+  margin:10px 0 14px 0;padding-left:20px;
+  list-style:disc;
+}
+.legal-section ul li{
+  font-size:15px;color:var(--gray-600);line-height:1.78;
+  margin-bottom:8px;
+}
+
+.legal-section a{
+  color:var(--orange);text-decoration:none;
+  border-bottom:1px solid rgba(232,96,28,.3);
+  transition:border-color .2s,color .2s;
+}
+.legal-section a:hover{
+  color:var(--orange-hover);
+  border-bottom-color:var(--orange-hover);
+}
+
+/* Contact card */
+.legal-contact-card{
+  margin-top:20px;
+  background:var(--off-white);
+  border:1px solid var(--gray-200);
+  border-radius:var(--r);
+  padding:24px 28px;
+  font-size:14.5px;color:var(--gray-600);
+  line-height:1.85;
+}
+.legal-contact-card strong{
+  display:block;font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.2px;
+  color:var(--gray-400);margin-bottom:10px;
+}
+.legal-contact-card a{
+  color:var(--orange);text-decoration:none;
+  border-bottom:1px solid rgba(232,96,28,.3);
+  transition:color .2s,border-color .2s;
+}
+.legal-contact-card a:hover{
+  color:var(--orange-hover);
+  border-bottom-color:var(--orange-hover);
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{
+  background:#040C18;
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:60px 64px 36px;
+}
+.footer-grid{
+  max-width:1220px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;
+  gap:48px;padding-bottom:48px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.footer-brand p{
+  font-size:13.5px;color:rgba(255,255,255,.38);
+  line-height:1.78;margin-top:16px;max-width:280px;
+}
+.footer-col h4{
+  font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.6px;
+  color:rgba(255,255,255,.4);margin-bottom:16px;
+}
+.footer-col a{
+  display:block;font-size:13.5px;color:rgba(255,255,255,.45);
+  text-decoration:none;margin-bottom:10px;
+  transition:color .2s;
+}
+.footer-col a:hover{color:rgba(255,255,255,.82);}
+.footer-contact-item{
+  display:flex;align-items:center;gap:9px;
+  font-size:13px;color:rgba(255,255,255,.42);
+  margin-bottom:10px;
+}
+.footer-contact-item span{font-size:15px;}
+.footer-contact-item a{
+  color:rgba(255,255,255,.42);text-decoration:none;
+  transition:color .2s;display:inline;margin:0;
+}
+.footer-contact-item a:hover{color:rgba(255,255,255,.7);}
+.footer-bottom{
+  max-width:1220px;margin:32px auto 0;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:16px;
+  font-size:12.5px;color:rgba(255,255,255,.25);
+}
+.footer-bottom-links{display:flex;gap:24px;}
+.footer-bottom-links a{
+  color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s;
+}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.55);}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:1024px){
+  #nav{padding:0 36px;}
+  .page-hero{padding:100px 36px 60px;}
+  .legal-content{padding:60px 36px 80px;}
+  footer{padding:52px 36px 28px;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
+}
+
+@media(max-width:768px){
+  #nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .mobile-drawer{display:block;}
+  .page-hero{padding:96px 24px 52px;}
+  .legal-content{padding:48px 24px 72px;}
+  footer{padding:48px 20px 24px;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
+  .footer-brand{grid-column:span 2;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .footer-bottom-links{justify-content:center;}
+}
+
+@media(max-width:480px){
+  .page-hero{padding:88px 20px 44px;}
+  .legal-content{padding:40px 20px 60px;}
+  .legal-section h2{font-size:16.5px;}
+  footer{padding:40px 16px 20px;}
+  .footer-grid{grid-template-columns:1fr;gap:24px;}
+  .footer-brand{grid-column:auto;}
+  .footer-bottom{gap:12px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="logo" aria-label="Nuvaio Travel — Home">
+    <img src="nuvaio-logo-white.png" class="logo-svg" alt="Nuvaio Travel">
+  </a>
+
+  <div class="nav-links" role="list">
+    <a href="index.html#services" role="listitem">Services</a>
+    <a href="index.html#why-switch" role="listitem">Why Nuvaio</a>
+    <a href="index.html#how" role="listitem">How It Works</a>
+    <a href="index.html#about" role="listitem">About</a>
+    <a href="index.html#contact" role="listitem">Contact</a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+  <a href="index.html#services">Services</a>
+  <a href="index.html#why-switch">Why Nuvaio</a>
+  <a href="index.html#how">How It Works</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     PAGE HERO
+════════════════════════════════════════ -->
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="page-hero-orb-1" aria-hidden="true"></div>
+  <div class="page-hero-orb-2" aria-hidden="true"></div>
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">Legal</div>
+    <h1 id="page-title">Terms of Service</h1>
+    <p class="page-hero-sub">Effective date: March 26, 2026 &nbsp;&bull;&nbsp; Nuvaio Travel LLC &nbsp;&bull;&nbsp; St. Louis, MO</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     LEGAL CONTENT
+════════════════════════════════════════ -->
+<main class="legal-content" id="main-content">
+  <div class="legal-inner">
+
+    <p class="legal-intro">
+      Please read these Terms of Service carefully before using the Nuvaio Travel website or engaging our consulting services. By accessing <a href="https://nuvaiotravel.com">nuvaiotravel.com</a> or submitting an inquiry, you agree to be bound by these terms. If you do not agree, please do not use this website or our services.
+    </p>
+
+    <!-- 1. Acceptance of Terms -->
+    <div class="legal-section">
+      <h2>1. Acceptance of Terms</h2>
+      <p>
+        These Terms of Service ("Terms") constitute a legally binding agreement between you ("Client," "you," or "your") and Nuvaio Travel LLC ("Nuvaio Travel," "we," "us," or "our"), a limited liability company organized under the laws of the State of Missouri with its principal place of business in St. Louis, MO.
+      </p>
+      <p>
+        By accessing or using this website, requesting information, submitting a contact form, or entering into any consulting engagement with Nuvaio Travel, you acknowledge that you have read, understood, and agree to be bound by these Terms, including any updates or modifications we may publish from time to time.
+      </p>
+    </div>
+
+    <!-- 2. Services Description -->
+    <div class="legal-section">
+      <h2>2. Services Description</h2>
+      <p>
+        Nuvaio Travel LLC provides corporate travel management consulting services to business clients, including but not limited to: air travel planning and budget development, flight booking facilitation and itinerary management, corporate travel policy advisory, group travel coordination, and 24-hour emergency travel support.
+      </p>
+      <p>
+        <strong>Important:</strong> Nuvaio Travel acts as a consultant and booking agent on behalf of its clients. We are not an airline, hotel, ground transportation provider, or any other travel supplier. We do not own, operate, or control any transportation or accommodation inventory. All travel services are ultimately fulfilled by third-party carriers and vendors, and separate terms and conditions of those providers apply to your travel.
+      </p>
+      <p>
+        Nuvaio Travel does not guarantee the availability of any particular fare, route, or accommodation. Prices, schedules, and availability are subject to change by the relevant supplier and are not within Nuvaio Travel's control.
+      </p>
+    </div>
+
+    <!-- 3. Use of Website -->
+    <div class="legal-section">
+      <h2>3. Use of Website</h2>
+      <p>
+        You may access and use this website solely for lawful purposes and in accordance with these Terms. You agree not to:
+      </p>
+      <ul>
+        <li>Use the website in any way that violates applicable federal, state, or local laws or regulations;</li>
+        <li>Scrape, crawl, index, copy, or otherwise reproduce website content, data, or materials without prior written consent from Nuvaio Travel;</li>
+        <li>Attempt to gain unauthorized access to any portion of the website, its servers, or any systems connected to it;</li>
+        <li>Introduce any viruses, malware, or other harmful code that could damage, disrupt, or impair the website or its infrastructure;</li>
+        <li>Use the website to transmit unsolicited commercial communications or engage in any form of data harvesting;</li>
+        <li>Impersonate any person or entity or misrepresent your affiliation with any person or entity.</li>
+      </ul>
+      <p>
+        We reserve the right to terminate or restrict your access to the website at our sole discretion, without notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.
+      </p>
+    </div>
+
+    <!-- 4. Inquiry & Consultation Process -->
+    <div class="legal-section">
+      <h2>4. Inquiry &amp; Consultation Process</h2>
+      <p>
+        Submitting a contact form, requesting a consultation, or otherwise expressing interest in Nuvaio Travel's services through this website does not constitute a binding service agreement and does not obligate either party to proceed.
+      </p>
+      <p>
+        A formal engagement with Nuvaio Travel commences only upon execution of a separate written service agreement signed by authorized representatives of both parties. Until such an agreement is in place, Nuvaio Travel has no obligation to perform any services, and any preliminary discussions, proposals, or consultations are non-binding.
+      </p>
+      <p>
+        Information submitted through this website's contact or inquiry forms will be used solely to respond to your inquiry and evaluate a potential engagement in accordance with our Privacy Policy.
+      </p>
+    </div>
+
+    <!-- 5. Intellectual Property -->
+    <div class="legal-section">
+      <h2>5. Intellectual Property</h2>
+      <p>
+        All content on this website — including text, graphics, logos, icons, photography, page layouts, and software — is the property of Nuvaio Travel LLC or its licensors and is protected by applicable United States and international copyright, trademark, and intellectual property laws.
+      </p>
+      <p>
+        You may view and print pages from this website solely for your own informational, non-commercial use. No content from this website may be reproduced, distributed, modified, publicly displayed, or used to create derivative works without the prior express written permission of Nuvaio Travel LLC.
+      </p>
+      <p>
+        The Nuvaio Travel name, logo, and any associated marks are trademarks of Nuvaio Travel LLC. Nothing in these Terms grants you any license to use our trademarks, trade names, or service marks.
+      </p>
+    </div>
+
+    <!-- 6. Limitation of Liability -->
+    <div class="legal-section">
+      <h2>6. Limitation of Liability</h2>
+      <p>
+        To the fullest extent permitted by applicable law, Nuvaio Travel LLC shall not be liable for any losses, damages, costs, or expenses — direct, indirect, incidental, special, consequential, or punitive — arising from or related to:
+      </p>
+      <ul>
+        <li>Airline schedule changes, delays, cancellations, or diversions beyond Nuvaio Travel's control;</li>
+        <li>Hotel overbooking, room unavailability, or changes to accommodation confirmed by a third-party provider;</li>
+        <li>Lost, delayed, or damaged baggage;</li>
+        <li>Acts of government, force majeure events, weather, labor disputes, or other circumstances outside Nuvaio Travel's reasonable control;</li>
+        <li>Errors or omissions in information provided by carriers, hotels, or other third-party vendors;</li>
+        <li>Your use of, or inability to use, this website or its content.</li>
+      </ul>
+      <p>
+        In any event, Nuvaio Travel's total aggregate liability to you for claims arising out of or relating to a specific engagement shall not exceed the fees actually paid by you to Nuvaio Travel under the applicable service agreement during the three (3) months immediately preceding the event giving rise to the claim.
+      </p>
+      <p>
+        Some jurisdictions do not allow the exclusion or limitation of certain damages. In such jurisdictions, our liability shall be limited to the maximum extent permitted by law.
+      </p>
+    </div>
+
+    <!-- 7. Indemnification -->
+    <div class="legal-section">
+      <h2>7. Indemnification</h2>
+      <p>
+        You agree to defend, indemnify, and hold harmless Nuvaio Travel LLC, its officers, directors, members, employees, agents, and service providers from and against any claims, liabilities, damages, judgments, awards, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to:
+      </p>
+      <ul>
+        <li>Your use of this website or our services;</li>
+        <li>Your violation of these Terms;</li>
+        <li>Your violation of any applicable law or the rights of any third party;</li>
+        <li>Any false or inaccurate information you provide to Nuvaio Travel.</li>
+      </ul>
+    </div>
+
+    <!-- 8. Governing Law -->
+    <div class="legal-section">
+      <h2>8. Governing Law &amp; Dispute Resolution</h2>
+      <p>
+        These Terms and any dispute or claim arising out of or relating to them shall be governed by and construed in accordance with the laws of the State of Missouri, without regard to its conflict of law provisions.
+      </p>
+      <p>
+        Any legal proceedings arising from or related to these Terms or your use of our services shall be brought exclusively in the state or federal courts of competent jurisdiction located in St. Louis, Missouri, and you hereby consent to the personal jurisdiction of such courts.
+      </p>
+      <p>
+        Before initiating formal legal proceedings, both parties agree to make a good faith effort to resolve any dispute through direct negotiation within thirty (30) days of written notice of the dispute.
+      </p>
+    </div>
+
+    <!-- 9. Changes to Terms -->
+    <div class="legal-section">
+      <h2>9. Changes to These Terms</h2>
+      <p>
+        Nuvaio Travel LLC reserves the right to modify these Terms at any time at our sole discretion. When we make material changes, we will update the effective date at the top of this page. Your continued use of this website after any changes are posted constitutes your acceptance of the revised Terms.
+      </p>
+      <p>
+        We encourage you to review these Terms periodically to stay informed of any updates. If you do not agree to the modified Terms, you should discontinue use of the website and our services.
+      </p>
+    </div>
+
+    <!-- 10. Contact Us -->
+    <div class="legal-section">
+      <h2>10. Contact Us</h2>
+      <p>
+        If you have questions, concerns, or requests relating to these Terms of Service, please contact us:
+      </p>
+      <div class="legal-contact-card">
+        <strong>Nuvaio Travel LLC</strong>
+        St. Louis, MO<br>
+        Phone: <a href="tel:+19754440066">975-444-0066</a><br>
+        Email: <a href="mailto:info@nuvaiotravel.com">info@nuvaiotravel.com</a><br>
+        Website: <a href="https://nuvaiotravel.com">nuvaiotravel.com</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+
+    <div class="footer-brand">
+      <img src="nuvaio-logo-white.png" style="height:115px;width:auto;" alt="Nuvaio Travel">
+      <p>The corporate travel partner mid-size companies choose when they need real expertise, dedicated agents, and a team that picks up the phone.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="index.html#services">Air Planning &amp; Budget</a>
+      <a href="index.html#services">Flight Bookings</a>
+      <a href="index.html#services">Corporate Travel Management</a>
+      <a href="index.html#services">Group Travel &amp; Manifests</a>
+      <a href="index.html#services">24-Hour Emergency Line</a>
+      <a href="index.html#services">Hotel &amp; Transport</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html#about">About Nuvaio</a>
+      <a href="index.html#why-switch">Why Switch</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="index.html#built-for">Who We Serve</a>
+      <a href="index.html#contact">Contact Us</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">📍</span>
+        <span>St. Louis, MO &mdash; Nationwide</span>
+      </div>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">📞</span>
+        <a href="tel:+19754440066">975-444-0066</a>
+      </div>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">✉️</span>
+        <a href="mailto:info@nuvaiotravel.com">info@nuvaiotravel.com</a>
+      </div>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">🕐</span>
+        <span>Mon–Fri · 9am–5pm CST</span>
+      </div>
+      <div class="footer-contact-item">
+        <span aria-hidden="true">🚨</span>
+        <span>24/7 Emergency Line</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2026 Nuvaio Travel LLC. All rights reserved. Corporate Travel Management&nbsp;&bull;&nbsp;Business Flight Booking&nbsp;&bull;&nbsp;Event Air Travel</span>
+    <div class="footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── 1. NAV: Scroll effect ── */
+  var nav = document.getElementById('nav');
+
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── 2. MOBILE NAV ── */
+  var hamburger = document.getElementById('hamburger');
+  var drawer = document.getElementById('mobile-drawer');
+
+  hamburger.addEventListener('click', function () {
+    var isOpen = drawer.classList.contains('open');
+    drawer.classList.toggle('open', !isOpen);
+    hamburger.classList.toggle('open', !isOpen);
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+    drawer.setAttribute('aria-hidden', String(isOpen));
+  });
+
+  // Close drawer when a link is clicked
+  drawer.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  // Close drawer on outside click
+  document.addEventListener('click', function (e) {
+    if (!nav.contains(e.target) && !drawer.contains(e.target)) {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+}());
+</script>
+
+</body>
+</html>
